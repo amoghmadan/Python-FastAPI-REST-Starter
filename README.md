@@ -22,7 +22,7 @@ Kick-starter to your REST application.
     - Unix-like: `. venv\bin\activate`
 - Install dependencies: -
   ```bash
-  pip install . -e '.[all]'
+  pip install . -e '.[automation,sqlite,test]'
   ```
 - Run: -
   ```bash
