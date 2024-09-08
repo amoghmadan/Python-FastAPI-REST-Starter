@@ -1,19 +1,13 @@
 from fastapi import Depends
 from sqlalchemy import text
-from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
+from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.dependencies import aliased_get_session
-from app.ext.db import Alias
+from app.dependencies import get_db
 
 
-async def world(
-    default_session: async_sessionmaker[AsyncSession] = Depends(
-        aliased_get_session(Alias.DEFAULT.value)
-    ),
-) -> dict[str, str]:
+async def world(db: AsyncSession = Depends(get_db)) -> dict[str, str]:
     """Hello, world from DB."""
     stmt = text("SELECT 'World!' AS world;")
-    async with default_session() as db:
-        result = await db.execute(stmt)
-        row = result.fetchone()
+    result = await db.execute(stmt)
+    row = result.fetchone()
     return {"hello": row[0]}

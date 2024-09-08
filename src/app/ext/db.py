@@ -1,5 +1,3 @@
-import enum
-
 from sqlalchemy.ext.asyncio import (
     AsyncAttrs,
     AsyncEngine,
@@ -11,13 +9,8 @@ from sqlalchemy.orm import DeclarativeBase
 
 from app import settings
 
-
-class Alias(enum.Enum):
-    DEFAULT = "default"
-
-
 engines: dict[str, AsyncEngine] = {
-    Alias.DEFAULT.value: create_async_engine(settings.DATABASE_URI),
+    alias: create_async_engine(uri) for alias, uri in settings.DATABASES.items()
 }
 
 session_makers: dict[str, async_sessionmaker[AsyncSession]] = {
@@ -27,4 +20,4 @@ session_makers: dict[str, async_sessionmaker[AsyncSession]] = {
 
 Model = type("Model", (AsyncAttrs, DeclarativeBase), {})
 
-__all__ = ["Alias", "Model", "engines", "session_makers"]
+__all__ = ["Model", "engines", "session_makers"]

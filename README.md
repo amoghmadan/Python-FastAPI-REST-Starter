@@ -6,9 +6,9 @@ Kick-starter to your REST application.
 
 - Fill the .env file with the following values, they might need adjustment.
   ```dotenv
-  DEBUG=<BOOLEAN>                   # Dev: True
-  SECRET_KEY=<TOKEN>                # Dev: a1b2c3d4e5f6g7h8i9j10k11l12m13n14o15p16q
-  SQLALCHEMY_DATABASE_URI=<STRING>  # Dev: sqlite:///db.sqlite3
+  DEBUG=<BOOLEAN>        # Dev: True
+  SECRET_KEY=<TOKEN>     # Dev: a1b2c3d4e5f6g7h8i9j10k11l12m13n14o15p16q
+  DATABASE_URI=<STRING>  # Dev: sqlite:///db.sqlite3
   ```
 
 ## How to set up project for development?

@@ -10,6 +10,7 @@ async def database_middleware(request: Request, call_next) -> Response:
     :param call_next: Any
     :return: Response
     """
-    request.state.session_makers = session_makers
-    response: Response = await call_next(request)
+    async with session_makers["default"]() as session:
+        request.state.db = session
+        response: Response = await call_next(request)
     return response
