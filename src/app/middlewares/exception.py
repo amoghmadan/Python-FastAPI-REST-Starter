@@ -21,4 +21,5 @@ async def exception_middleware(request: Request, call_next) -> Response:
         response = await call_next(request)
     except Exception as e:
         logging.error(e, exc_info=True)
+        raise e
     return response
