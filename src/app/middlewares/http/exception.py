@@ -4,13 +4,16 @@ from http import HTTPStatus
 
 from fastapi import Request, Response
 from fastapi.responses import JSONResponse
+from typing_extensions import Awaitable, Callable
 
 
-async def exception_middleware(request: Request, call_next) -> Response:
+async def exception_middleware(
+    request: Request, call_next: Callable[[Request], Awaitable[Response]]
+) -> Response:
     """
     Exception Middleware
     :param request: Request
-    :param call_next: Any
+    :param call_next: Callable[[Request], Awaitable[Response]]
     :return: Response
     """
     response = JSONResponse(
