@@ -10,5 +10,5 @@ async def world(db: AsyncSession = Depends(get_db)) -> World:
     """Hello, world from DB."""
     stmt = text("SELECT 'World!' AS world;")
     result = await db.execute(stmt)
-    row = result.fetchone()
-    return World(hello=row[0])
+    first = result.scalar_one()
+    return World(hello=first)
