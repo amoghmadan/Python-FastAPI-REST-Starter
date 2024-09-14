@@ -1,3 +1,4 @@
+from sqlalchemy import MetaData
 from sqlalchemy.ext.asyncio import (
     AsyncAttrs,
     AsyncEngine,
@@ -8,6 +9,8 @@ from sqlalchemy.ext.asyncio import (
 from sqlalchemy.orm import DeclarativeBase
 
 from app import settings
+
+metadata = MetaData()
 
 engines: dict[str, AsyncEngine] = {
     alias: create_async_engine(uri) for alias, uri in settings.DATABASES.items()
@@ -20,4 +23,4 @@ session_makers: dict[str, async_sessionmaker[AsyncSession]] = {
 
 Model = type("Model", (AsyncAttrs, DeclarativeBase), {})
 
-__all__ = ["Model", "engines", "session_makers"]
+__all__ = ["Model", "engines", "metadata", "session_makers"]
