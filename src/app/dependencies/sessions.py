@@ -27,11 +27,11 @@ class AliasedSessionMaker:
         :param request: Request
         :return: async_sessionmaker[AsyncSession]
         """
-        if self._alias not in request.app.state.session_makers:
+        if self._alias not in request.app.state.sessionmakers:
             messages = (
                 "%r database not configured properly.",
                 "Did you forget to specify the %r in the DATABASES settings?",
             )
             raise ValueError(*(msg % self._alias for msg in messages))
 
-        return request.app.state.session_makers[self._alias]
+        return request.app.state.sessionmakers[self._alias]
