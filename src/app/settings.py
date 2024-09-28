@@ -49,11 +49,11 @@ LOGGING = {
                 "backupCount": 5,
                 "maxBytes": 1024 * 1024 * 15,
             },
-        },
-        "console": {
-            "level": "INFO",
-            "class": "logging.StreamHandler",
-            "formatter": "verbose",
+            "console": {
+                "level": "INFO",
+                "class": "logging.StreamHandler",
+                "formatter": "verbose",
+            },
         },
         "loggers": {
             "": {  # root logger
