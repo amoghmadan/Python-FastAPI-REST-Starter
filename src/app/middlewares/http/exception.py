@@ -6,6 +6,10 @@ from fastapi import Request, Response
 from fastapi.responses import JSONResponse
 from typing_extensions import Awaitable, Callable
 
+from app import settings
+
+logging.config.dictConfig(settings.LOGGING)
+
 
 async def exception_middleware(
     request: Request, call_next: Callable[[Request], Awaitable[Response]]
@@ -24,5 +28,4 @@ async def exception_middleware(
         response = await call_next(request)
     except Exception as e:
         logging.error(e, exc_info=True)
-        raise e
     return response
