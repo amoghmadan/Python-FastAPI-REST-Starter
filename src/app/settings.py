@@ -40,28 +40,28 @@ LOGGING = {
         "verbose": {
             "format": "%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s"  # noqa: E501
         },
-        "handlers": {
-            "file": {
-                "level": "DEBUG",
-                "class": "logging.handlers.RotatingFileHandler",
-                "filename": LOG_DIR / "debug.log",
-                "formatter": "verbose",
-                "backupCount": 5,
-                "maxBytes": 1024 * 1024 * 15,
-            },
-            "console": {
-                "level": "INFO",
-                "class": "logging.StreamHandler",
-                "formatter": "verbose",
-            },
+    },
+    "handlers": {
+        "file": {
+            "level": "DEBUG",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": LOG_DIR / "debug.log",
+            "formatter": "verbose",
+            "backupCount": 5,
+            "maxBytes": 1024 * 1024 * 15,
         },
-        "loggers": {
-            "": {  # root logger
-                "handlers": ["file", "console"],
-                "level": "DEBUG",
-                "propagate": True,
-            }
+        "console": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
         },
+    },
+    "loggers": {
+        "": {  # root logger
+            "handlers": ["file", "console"],
+            "level": "DEBUG",
+            "propagate": True,
+        }
     },
 }
 
