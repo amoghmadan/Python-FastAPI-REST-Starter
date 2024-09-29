@@ -29,4 +29,4 @@ ENV PATH="$VENV_PATH/bin:$PATH"
 
 # Copy the application code and install dependencies
 COPY --chown=$USERNAME:$USERNAME . .
-RUN pip install -e ".[deployment]"
+RUN pip install -e ".[deployment,sqlite]"
