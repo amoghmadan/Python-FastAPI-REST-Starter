@@ -1,7 +1,7 @@
 services:
   application:
     build: .
-    command: gunicorn app:asgi:application -b 0.0.0.0:8000 -w 4 -k uvicorn.workers.UvicornWorker --log-level INFO
+    command: gunicorn app.asgi:application -b 0.0.0.0:8000 -w 4 -k uvicorn.workers.UvicornWorker --log-level INFO
     container_name: "Application"
     environment:
       DEBUG: "True"
