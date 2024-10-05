@@ -1,4 +1,4 @@
 from app.dependencies.database import get_db
-from app.dependencies.sessions import AliasedSessionMaker
+from app.dependencies.sessions import AliasedSessionmaker
 
-__all__ = ["AliasedSessionMaker", "get_db"]
+__all__ = ["AliasedSessionmaker", "get_db"]
